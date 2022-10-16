@@ -6,7 +6,7 @@
 # Maintainer: Jose M. Garcia <josemaria.alkala at gmail dot com>
 _pkgname='mchfuse'
 pkgname="${_pkgname}-bin"
-pkgver="0.3.2"
+pkgver="0.4.0"
 pkgrel=1
 epoch=0
 pkgdesc="Western Digital My Cloud Home FUSE file system"
@@ -25,6 +25,7 @@ backup=()
 options=()
 install=
 changelog=
+#source = ("mchfuse.conf")
 source_x86_64=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgver}/mchfuse_${pkgver}_Linux_x86_64.tar.gz" "mchfuse.conf")
 source_aarch64=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgver}/mchfuse_${pkgver}_Linux_arm64.tar.gz" "mchfuse.conf")
 source_armv7h=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgver}/mchfuse_${pkgver}_Linux_armv7.tar.gz" "mchfuse.conf")
@@ -32,16 +33,17 @@ source_armv6h=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgv
 source_armv5h=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgver}/mchfuse_${pkgver}_Linux_armv5.tar.gz" "mchfuse.conf")
 
 noextract=()
-md5sums_x86_64=('c8f1e8803c67745038ec34d698899963'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
-md5sums_aarch64=('7a91fa13fc780f0de59b450036f6cc85'
-                 '9e60adc6ce38e57eeb00663a8ecdc01a')
-md5sums_armv7h=('12ca1e0256538438930b7d3de6f7ded4'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
-md5sums_armv6h=('de44344cadbaf4eeb513f8ec35e92249'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
-md5sums_armv5h=('7e4fabd6ffcfee5a09adb468b5738b5c'
-                '9e60adc6ce38e57eeb00663a8ecdc01a')
+#md5sums = ('fa672977e621324c4dd65fb9d2506c20')
+md5sums_x86_64=('5e12fc1c63ab9acc708e68554d786808'
+                'fa672977e621324c4dd65fb9d2506c20')
+md5sums_aarch64=('da2f45c4c50ae020cfd622a9840c0d0a'
+                 'fa672977e621324c4dd65fb9d2506c20')
+md5sums_armv7h=('107316cb2305294064b7c70d2af25694'
+                'fa672977e621324c4dd65fb9d2506c20')
+md5sums_armv6h=('b38b9a83acca689de94ba7970a5a9f4d'
+                'fa672977e621324c4dd65fb9d2506c20')
+md5sums_armv5h=('4fcc323149863b3a4357e7529d1fe6c8'
+                'fa672977e621324c4dd65fb9d2506c20')
 validpgpkeys=()
 backup=('etc/mchfuse.conf' 
 )
@@ -49,7 +51,7 @@ backup=('etc/mchfuse.conf'
 package() {
     tar -xf ${_pkgname}_${pkgver}_Linux_x86_64.tar.gz
     install -Dm 655 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm 600 "${_pkgname}.conf" "${pkgdir}/etc/mchfuse/${_pkgname}.conf"
+    install -Dm 600 "${_pkgname}.conf" "${pkgdir}/etc/${_pkgname}.conf"
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname-bin}/LICENSE
     install -dm777 "${pkgdir}/mnt/mch"
     echo "Edit /etc/mchfuse.conf with your username and password"
