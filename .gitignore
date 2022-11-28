@@ -1,3 +1,8 @@
+# matiec
+matiec/*
+!matiec/PKGBUILD
+!matiec/.SRCINFO
+
 # coolprop-git
 coolprop-git/*
 !coolprop-git/PKGBUILD

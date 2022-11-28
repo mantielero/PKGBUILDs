@@ -1,0 +1,62 @@
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# Maintainer: Your Name <youremail@domain.com>
+pkgname=matiec
+pkgver=1
+pkgrel=1
+epoch=
+pkgdesc=""
+arch=('x86_64')
+url="https://github.com/nucleron/matiec"
+license=('GPL-3.0')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("git+${url}.git")  # https://github.com/nucleron/matiec.git
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+prepare() {
+	cd "$pkgname"
+	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+}
+
+build() {
+	cd "$pkgname"
+	autoreconf -i
+	./configure --prefix=/usr
+	make -s
+}
+
+check() {
+	cd "$pkgname"
+	make -k check
+}
+
+# package() {
+# 	cd "$pkgname-$pkgver"
+# 	make DESTDIR="$pkgdir/" install
+# }
+package() {
+  cd "$pkgname"
+  #make DESTDIR="$pkgdir/" install
+  install -Dm755 iec2c ${pkgdir}/usr/bin/iec2c
+  install -Dm755 iec2iec ${pkgdir}/usr/bin/iec2iec
+  install -d ${pkgdir}/usr/bin/lib
+  install -d ${pkgdir}/usr/bin/lib/C  
+  install -D lib/*.* ${pkgdir}/usr/bin/lib 
+  install -D lib/C/*.* ${pkgdir}/usr/bin/lib/C 
+}
