@@ -1,9 +1,0 @@
-# mchfuse-bin/*.tar.gz
-# mchfuse-bin/*.zst
-# mchfuse-bin/*.service
-# mchfuse-bin/*.sysusers
-# mchfuse-bin/pkg/**/*
-# mchfuse-bin/src/**/*
-*
-!**/PKGBUILD
-!**/*.conf

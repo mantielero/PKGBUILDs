@@ -1,0 +1,16 @@
+# Example Service File 
+[Unit]
+Description=Service that mounts My Cloud Home(mch) on boot to /mnt/mch
+After=network.target
+
+[Service]
+Type=Simple
+User=mchfuseuser
+Restart=always
+RestartSec=5
+StartLimitBurst=5
+StartLimitIntervalSec=30
+ExecStart=/usr/bin/mchfuse -c /etc/mchfuse/mchfuse.conf "YOUR MY CLOUD NAME" /mnt/mch
+
+[Install]
+WantedBy=multi-user.target
