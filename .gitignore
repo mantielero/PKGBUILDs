@@ -1,0 +1,12 @@
+# coolprop-git
+coolprop-git/*
+!coolprop-git/PKGBUILD
+!coolprop-git/.SRCINFO
+
+# mchfuse-bin
+mchfuse-bin/*
+!mchfuse-bin/PKGBUILD
+!mchfuse-bin/.SRCINFO
+!mchfuse-bin/mchfuse.conf
+!mchfuse-bin/mchfuse.service
+!mchfuse-bin/mchfuse.sysusers
